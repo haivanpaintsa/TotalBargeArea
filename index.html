@@ -1,293 +1,617 @@
 <!doctype html>
 <html lang="vi">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Công cụ tính diện tích bề mặt cần sơn cho ba loại sà lan.">
-    <title>Công cụ tính diện tích sơn sà lan</title>
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Công cụ tính diện tích bề mặt cần sơn cho ba loại sà lan."
+    />
+    <title>Công cụ tính diện tích sơn sà lan · Sơn Hải Vân</title>
+    <link rel="icon" type="image/png" href="logo-hai-van.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,440;0,9..144,560;0,9..144,650;1,9..144,500&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <header class="hero">
-        <div class="hero__content">
-            <p class="hero__eyebrow">SON HAI VAN · CÔNG CỤ KỸ THUẬT</p>
-            <h1>CÔNG CỤ TÍNH DIỆN TÍCH SƠN SÀ LAN</h1>
-            <p class="hero__description">Tính nhanh diện tích bề mặt cần sơn cho từng loại sà lan</p>
+      <div class="hero__content">
+        <div class="hero__bar">
+          <a
+            class="hero__brand"
+            href="#calculator-panel"
+            aria-label="Sơn Hải Vân — về đầu công cụ"
+          >
+            <img
+              class="hero__logo"
+              src="/img/Logo-HV-01.png"
+              alt="Sơn Hải Vân"
+              width="44"
+              height="42"
+            />
+            <span class="hero__wordmark">SƠN HẢI VÂN</span>
+          </a>
+          <p class="hero__eyebrow">Công cụ kỹ thuật</p>
         </div>
+        <h1>Công cụ tính diện tích sơn sà lan</h1>
+        <p class="hero__description">
+          Tính nhanh diện tích bề mặt cần sơn cho từng loại sà lan
+        </p>
+      </div>
     </header>
 
     <main class="app-shell">
-        <section class="type-selector" aria-labelledby="barge-type-heading">
-            <div class="section-intro">
-                <div>
-                    <p class="section-kicker">BƯỚC 1</p>
-                    <h2 id="barge-type-heading">Chọn loại sà lan</h2>
-                </div>
-                <p class="section-hint">Công thức và hệ số mặc định sẽ thay đổi theo lựa chọn.</p>
-            </div>
+      <section class="type-selector" aria-labelledby="barge-type-heading">
+        <div class="section-intro">
+          <div>
+            <p class="section-kicker">Bước 1</p>
+            <h2 id="barge-type-heading">Chọn loại sà lan</h2>
+          </div>
+          <p class="section-hint">
+            Công thức và hệ số mặc định sẽ thay đổi theo lựa chọn.
+          </p>
+        </div>
 
-            <div class="type-tabs" role="tablist" aria-label="Loại sà lan">
-                <button class="type-tab is-active" id="tab-deck" type="button" role="tab" aria-selected="true" aria-controls="calculator-panel" data-barge-type="deck">
-                    <span class="type-tab__number">01</span>
-                    <span class="type-tab__label">Sà lan boong</span>
-                </button>
-                <button class="type-tab" id="tab-under700" type="button" role="tab" aria-selected="false" aria-controls="calculator-panel" data-barge-type="under700">
-                    <span class="type-tab__number">02</span>
-                    <span class="type-tab__label">Sà lan tự hành ≤ 700 tấn</span>
-                </button>
-                <button class="type-tab" id="tab-over700" type="button" role="tab" aria-selected="false" aria-controls="calculator-panel" data-barge-type="over700">
-                    <span class="type-tab__number">03</span>
-                    <span class="type-tab__label">Sà lan tự hành &gt; 700 tấn</span>
-                </button>
-            </div>
-        </section>
+        <div class="type-tabs" role="tablist" aria-label="Loại sà lan">
+          <button
+            class="type-tab is-active"
+            id="tab-deck"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="calculator-panel"
+            data-barge-type="deck"
+          >
+            <span class="type-tab__number">01</span>
+            <span class="type-tab__label">Sà lan boong</span>
+          </button>
+          <button
+            class="type-tab"
+            id="tab-under700"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="calculator-panel"
+            data-barge-type="under700"
+          >
+            <span class="type-tab__number">02</span>
+            <span class="type-tab__label">Sà lan tự hành ≤ 700 tấn</span>
+          </button>
+          <button
+            class="type-tab"
+            id="tab-over700"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="calculator-panel"
+            data-barge-type="over700"
+          >
+            <span class="type-tab__number">03</span>
+            <span class="type-tab__label">Sà lan tự hành &gt; 700 tấn</span>
+          </button>
+        </div>
+      </section>
 
-        <form id="calculator-panel" class="calculator" role="tabpanel" aria-labelledby="tab-deck" novalidate>
-            <div class="section-intro section-intro--form">
-                <div>
-                    <p class="section-kicker">BƯỚC 2</p>
-                    <h2>Nhập thông số</h2>
-                </div>
-                <p class="section-hint"><span class="required-dot" aria-hidden="true"></span> Trường bắt buộc</p>
-            </div>
+      <form
+        id="calculator-panel"
+        class="calculator"
+        role="tabpanel"
+        aria-labelledby="tab-deck"
+        novalidate
+      >
+        <div class="section-intro section-intro--form">
+          <div>
+            <p class="section-kicker">Bước 2</p>
+            <h2>Nhập thông số</h2>
+          </div>
+          <p class="section-hint">
+            <span class="required-dot" aria-hidden="true"></span> Trường bắt
+            buộc
+          </p>
+        </div>
 
-            <section class="input-card" aria-labelledby="outer-hull-heading">
-                <header class="input-card__header">
-                    <div>
-                        <p class="input-card__index">01</p>
-                        <h3 id="outer-hull-heading">Số liệu vỏ ngoài</h3>
-                    </div>
-                    <p id="outer-hull-note">Nhập kích thước chính của sà lan.</p>
-                </header>
-
-                <div class="field-grid">
-                    <div class="field">
-                        <label for="length">Chiều dài D <span aria-hidden="true">*</span></label>
-                        <div class="input-with-unit">
-                            <input id="length" name="length" type="text" inputmode="decimal" autocomplete="off" aria-describedby="length-error">
-                            <span>m</span>
-                        </div>
-                        <p class="field-error" id="length-error" aria-live="polite"></p>
-                    </div>
-
-                    <div class="field">
-                        <label for="width">Chiều rộng R <span aria-hidden="true">*</span></label>
-                        <div class="input-with-unit">
-                            <input id="width" name="width" type="text" inputmode="decimal" autocomplete="off" aria-describedby="width-error">
-                            <span>m</span>
-                        </div>
-                        <p class="field-error" id="width-error" aria-live="polite"></p>
-                    </div>
-
-                    <div class="field">
-                        <label for="height">Chiều cao C <span aria-hidden="true">*</span></label>
-                        <div class="input-with-unit">
-                            <input id="height" name="height" type="text" inputmode="decimal" autocomplete="off" aria-describedby="height-error">
-                            <span>m</span>
-                        </div>
-                        <p class="field-error" id="height-error" aria-live="polite"></p>
-                    </div>
-
-                    <div class="field field--calculated">
-                        <label for="draft">Mớn quy ước T₀</label>
-                        <div class="input-with-unit">
-                            <input id="draft" name="draft" type="text" readonly aria-readonly="true" tabindex="-1">
-                            <span>m</span>
-                        </div>
-                        <p class="field-help" id="draft-help">Tự động tính từ chiều cao C.</p>
-                    </div>
-
-                    <div class="field field--calculated">
-                        <label for="freeboard">Chiều cao mạn khô H</label>
-                        <div class="input-with-unit">
-                            <input id="freeboard" name="freeboard" type="text" readonly aria-readonly="true" tabindex="-1">
-                            <span>m</span>
-                        </div>
-                        <p class="field-help">Tự động tính từ chiều cao C.</p>
-                    </div>
-
-                    <div class="field self-propelled-only" id="k-field" hidden>
-                        <label for="coefficient-k">Hệ số hiệu chỉnh k <span aria-hidden="true">*</span></label>
-                        <div class="input-with-unit input-with-unit--factor">
-                            <input id="coefficient-k" name="coefficientK" type="text" inputmode="decimal" autocomplete="off" aria-describedby="coefficient-k-error">
-                        </div>
-                        <p class="field-error" id="coefficient-k-error" aria-live="polite"></p>
-                    </div>
-
-                    <div class="field">
-                        <label for="rib-factor">Hệ số xương vỏ ngoài <span aria-hidden="true">*</span></label>
-                        <div class="input-with-unit input-with-unit--factor">
-                            <input id="rib-factor" name="ribFactor" type="text" inputmode="decimal" autocomplete="off" aria-describedby="rib-factor-error">
-                        </div>
-                        <p class="field-error" id="rib-factor-error" aria-live="polite"></p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="input-card optional-section self-propelled-section" id="coaming-section" aria-labelledby="coaming-heading" hidden>
-                <header class="input-card__header">
-                    <div>
-                        <p class="input-card__index">02</p>
-                        <h3 id="coaming-heading">Số liệu quầy hầm</h3>
-                    </div>
-                    <label class="switch-row" for="has-coaming">
-                        <input id="has-coaming" name="hasCoaming" type="checkbox">
-                        <span class="switch" aria-hidden="true"></span>
-                        <span>Có quầy hầm</span>
-                    </label>
-                </header>
-
-                <div class="optional-fields" id="coaming-fields" hidden>
-                    <p class="optional-fields__hint">Nhập đầy đủ kích thước khi sà lan có quầy hầm.</p>
-                    <div class="field-grid field-grid--four">
-                        <div class="field">
-                            <label for="coaming-length">Chiều dài quầy hầm <span aria-hidden="true">*</span></label>
-                            <div class="input-with-unit">
-                                <input id="coaming-length" name="coamingLength" type="text" inputmode="decimal" autocomplete="off" aria-describedby="coaming-length-error" disabled>
-                                <span>m</span>
-                            </div>
-                            <p class="field-error" id="coaming-length-error" aria-live="polite"></p>
-                        </div>
-                        <div class="field">
-                            <label for="coaming-width">Chiều rộng quầy hầm <span aria-hidden="true">*</span></label>
-                            <div class="input-with-unit">
-                                <input id="coaming-width" name="coamingWidth" type="text" inputmode="decimal" autocomplete="off" aria-describedby="coaming-width-error" disabled>
-                                <span>m</span>
-                            </div>
-                            <p class="field-error" id="coaming-width-error" aria-live="polite"></p>
-                        </div>
-                        <div class="field">
-                            <label for="coaming-height">Chiều cao quầy hầm <span aria-hidden="true">*</span></label>
-                            <div class="input-with-unit">
-                                <input id="coaming-height" name="coamingHeight" type="text" inputmode="decimal" autocomplete="off" aria-describedby="coaming-height-error" disabled>
-                                <span>m</span>
-                            </div>
-                            <p class="field-error" id="coaming-height-error" aria-live="polite"></p>
-                        </div>
-                        <div class="field">
-                            <label for="coaming-factor">Hệ số xương quầy hầm <span aria-hidden="true">*</span></label>
-                            <div class="input-with-unit input-with-unit--factor">
-                                <input id="coaming-factor" name="coamingFactor" type="text" inputmode="decimal" autocomplete="off" aria-describedby="coaming-factor-error" disabled>
-                            </div>
-                            <p class="field-error" id="coaming-factor-error" aria-live="polite"></p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="input-card optional-section self-propelled-section" id="cargo-section" aria-labelledby="cargo-heading" hidden>
-                <header class="input-card__header">
-                    <div>
-                        <p class="input-card__index">03</p>
-                        <h3 id="cargo-heading">Số liệu hầm hàng</h3>
-                    </div>
-                    <label class="switch-row" for="has-cargo-hold">
-                        <input id="has-cargo-hold" name="hasCargoHold" type="checkbox">
-                        <span class="switch" aria-hidden="true"></span>
-                        <span>Có hầm hàng</span>
-                    </label>
-                </header>
-
-                <div class="optional-fields" id="cargo-fields" hidden>
-                    <p class="optional-fields__hint">Số vách ngăn là số nguyên từ 0 trở lên.</p>
-                    <div class="field-grid field-grid--four">
-                        <div class="field">
-                            <label for="cargo-length">Chiều dài hầm hàng <span aria-hidden="true">*</span></label>
-                            <div class="input-with-unit">
-                                <input id="cargo-length" name="cargoLength" type="text" inputmode="decimal" autocomplete="off" aria-describedby="cargo-length-error" disabled>
-                                <span>m</span>
-                            </div>
-                            <p class="field-error" id="cargo-length-error" aria-live="polite"></p>
-                        </div>
-                        <div class="field">
-                            <label for="cargo-width">Chiều rộng hầm hàng <span aria-hidden="true">*</span></label>
-                            <div class="input-with-unit">
-                                <input id="cargo-width" name="cargoWidth" type="text" inputmode="decimal" autocomplete="off" aria-describedby="cargo-width-error" disabled>
-                                <span>m</span>
-                            </div>
-                            <p class="field-error" id="cargo-width-error" aria-live="polite"></p>
-                        </div>
-                        <div class="field">
-                            <label for="cargo-height">Chiều cao hầm hàng <span aria-hidden="true">*</span></label>
-                            <div class="input-with-unit">
-                                <input id="cargo-height" name="cargoHeight" type="text" inputmode="decimal" autocomplete="off" aria-describedby="cargo-height-error" disabled>
-                                <span>m</span>
-                            </div>
-                            <p class="field-error" id="cargo-height-error" aria-live="polite"></p>
-                        </div>
-                        <div class="field">
-                            <label for="partition-count">Số vách ngăn <span aria-hidden="true">*</span></label>
-                            <div class="input-with-unit input-with-unit--factor">
-                                <input id="partition-count" name="partitionCount" type="text" inputmode="numeric" autocomplete="off" aria-describedby="partition-count-error" disabled>
-                            </div>
-                            <p class="field-error" id="partition-count-error" aria-live="polite"></p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <div class="actions no-print" aria-label="Các chức năng tính toán">
-                <button class="button button--primary" type="submit">Tính diện tích</button>
-                <button class="button button--secondary" id="load-sample-button" type="button">Nạp dữ liệu mẫu</button>
-                <button class="button button--ghost" id="reset-button" type="button">Xóa dữ liệu</button>
-                <button class="button button--ghost" id="copy-button" type="button" disabled>Sao chép kết quả</button>
-                <button class="button button--print" id="print-button" type="button" disabled>In báo cáo</button>
-            </div>
-        </form>
-
-        <section class="results" id="results-section" aria-labelledby="results-heading">
-            <div class="section-intro section-intro--results">
-                <div>
-                    <p class="section-kicker">BƯỚC 3</p>
-                    <h2 id="results-heading">Kết quả diện tích</h2>
-                </div>
-                <p class="result-state" id="result-status" aria-live="polite">Nhập đủ thông số để xem kết quả.</p>
-            </div>
-
-            <div class="print-meta" id="print-meta" aria-label="Thông tin báo cáo">
-                <p><strong>Loại sà lan:</strong> <span id="print-barge-type">Sà lan boong</span></p>
-                <p><strong>Ngày giờ tính toán:</strong> <span id="print-calculated-at">—</span></p>
-                <div>
-                    <strong>Thông số đầu vào:</strong>
-                    <ul id="print-input-list"></ul>
-                </div>
-            </div>
-
-            <div class="table-scroll" tabindex="0" aria-label="Bảng kết quả diện tích có thể cuộn ngang">
-                <table>
-                    <thead>
-                        <tr>
-                            <th scope="col">Khu vực</th>
-                            <th scope="col">Diện tích</th>
-                            <th scope="col">Đơn vị</th>
-                        </tr>
-                    </thead>
-                    <tbody id="results-body"></tbody>
-                </table>
-            </div>
-
-            <details class="formula-details">
-                <summary>Chi tiết công thức</summary>
-                <div class="formula-content" id="formula-content">
-                    <p>Chọn loại sà lan và nhập đủ thông số để xem phép thế số.</p>
-                </div>
-            </details>
-        </section>
-
-        <aside class="notice" aria-label="Ghi chú cảnh báo">
-            <div class="notice__mark" aria-hidden="true">!</div>
+        <section class="input-card" aria-labelledby="outer-hull-heading">
+          <header class="input-card__header">
             <div>
-                <h2>Ghi chú quan trọng</h2>
-                <p>Kết quả được tính theo công thức nội bộ từ bảng tính Excel và mang tính chất ước tính. Cần kiểm tra lại thông số thực tế trước khi báo giá hoặc triển khai thi công.</p>
+              <p class="input-card__index">01</p>
+              <h3 id="outer-hull-heading">Số liệu vỏ ngoài</h3>
             </div>
-        </aside>
+            <p id="outer-hull-note">Nhập kích thước chính của sà lan.</p>
+          </header>
 
-        <div class="toast no-print" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+          <div class="field-grid">
+            <div class="field">
+              <label for="length"
+                >Chiều dài D <span aria-hidden="true">*</span></label
+              >
+              <div class="input-with-unit">
+                <input
+                  id="length"
+                  name="length"
+                  type="text"
+                  inputmode="decimal"
+                  autocomplete="off"
+                  aria-describedby="length-error"
+                />
+                <span>m</span>
+              </div>
+              <p class="field-error" id="length-error" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+              <label for="width"
+                >Chiều rộng R <span aria-hidden="true">*</span></label
+              >
+              <div class="input-with-unit">
+                <input
+                  id="width"
+                  name="width"
+                  type="text"
+                  inputmode="decimal"
+                  autocomplete="off"
+                  aria-describedby="width-error"
+                />
+                <span>m</span>
+              </div>
+              <p class="field-error" id="width-error" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+              <label for="height"
+                >Chiều cao C <span aria-hidden="true">*</span></label
+              >
+              <div class="input-with-unit">
+                <input
+                  id="height"
+                  name="height"
+                  type="text"
+                  inputmode="decimal"
+                  autocomplete="off"
+                  aria-describedby="height-error"
+                />
+                <span>m</span>
+              </div>
+              <p class="field-error" id="height-error" aria-live="polite"></p>
+            </div>
+
+            <div class="field field--calculated">
+              <label for="draft">Mớn quy ước T₀</label>
+              <div class="input-with-unit">
+                <input
+                  id="draft"
+                  name="draft"
+                  type="text"
+                  readonly
+                  aria-readonly="true"
+                  tabindex="-1"
+                />
+                <span>m</span>
+              </div>
+              <p class="field-help" id="draft-help">
+                Tự động tính từ chiều cao C.
+              </p>
+            </div>
+
+            <div class="field field--calculated">
+              <label for="freeboard">Chiều cao mạn khô H</label>
+              <div class="input-with-unit">
+                <input
+                  id="freeboard"
+                  name="freeboard"
+                  type="text"
+                  readonly
+                  aria-readonly="true"
+                  tabindex="-1"
+                />
+                <span>m</span>
+              </div>
+              <p class="field-help">Tự động tính từ chiều cao C.</p>
+            </div>
+
+            <div class="field self-propelled-only" id="k-field" hidden>
+              <label for="coefficient-k"
+                >Hệ số hiệu chỉnh k <span aria-hidden="true">*</span></label
+              >
+              <div class="input-with-unit input-with-unit--factor">
+                <input
+                  id="coefficient-k"
+                  name="coefficientK"
+                  type="text"
+                  inputmode="decimal"
+                  autocomplete="off"
+                  aria-describedby="coefficient-k-error"
+                />
+              </div>
+              <p
+                class="field-error"
+                id="coefficient-k-error"
+                aria-live="polite"
+              ></p>
+            </div>
+
+            <div class="field">
+              <label for="rib-factor"
+                >Hệ số xương vỏ ngoài <span aria-hidden="true">*</span></label
+              >
+              <div class="input-with-unit input-with-unit--factor">
+                <input
+                  id="rib-factor"
+                  name="ribFactor"
+                  type="text"
+                  inputmode="decimal"
+                  autocomplete="off"
+                  aria-describedby="rib-factor-error"
+                />
+              </div>
+              <p
+                class="field-error"
+                id="rib-factor-error"
+                aria-live="polite"
+              ></p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="input-card optional-section self-propelled-section"
+          id="coaming-section"
+          aria-labelledby="coaming-heading"
+          hidden
+        >
+          <header class="input-card__header">
+            <div>
+              <p class="input-card__index">02</p>
+              <h3 id="coaming-heading">Số liệu quầy hầm</h3>
+            </div>
+            <label class="switch-row" for="has-coaming">
+              <input id="has-coaming" name="hasCoaming" type="checkbox" />
+              <span class="switch" aria-hidden="true"></span>
+              <span>Có quầy hầm</span>
+            </label>
+          </header>
+
+          <div class="optional-fields" id="coaming-fields" hidden>
+            <p class="optional-fields__hint">
+              Nhập đầy đủ kích thước khi sà lan có quầy hầm.
+            </p>
+            <div class="field-grid field-grid--four">
+              <div class="field">
+                <label for="coaming-length"
+                  >Chiều dài quầy hầm <span aria-hidden="true">*</span></label
+                >
+                <div class="input-with-unit">
+                  <input
+                    id="coaming-length"
+                    name="coamingLength"
+                    type="text"
+                    inputmode="decimal"
+                    autocomplete="off"
+                    aria-describedby="coaming-length-error"
+                    disabled
+                  />
+                  <span>m</span>
+                </div>
+                <p
+                  class="field-error"
+                  id="coaming-length-error"
+                  aria-live="polite"
+                ></p>
+              </div>
+              <div class="field">
+                <label for="coaming-width"
+                  >Chiều rộng quầy hầm <span aria-hidden="true">*</span></label
+                >
+                <div class="input-with-unit">
+                  <input
+                    id="coaming-width"
+                    name="coamingWidth"
+                    type="text"
+                    inputmode="decimal"
+                    autocomplete="off"
+                    aria-describedby="coaming-width-error"
+                    disabled
+                  />
+                  <span>m</span>
+                </div>
+                <p
+                  class="field-error"
+                  id="coaming-width-error"
+                  aria-live="polite"
+                ></p>
+              </div>
+              <div class="field">
+                <label for="coaming-height"
+                  >Chiều cao quầy hầm <span aria-hidden="true">*</span></label
+                >
+                <div class="input-with-unit">
+                  <input
+                    id="coaming-height"
+                    name="coamingHeight"
+                    type="text"
+                    inputmode="decimal"
+                    autocomplete="off"
+                    aria-describedby="coaming-height-error"
+                    disabled
+                  />
+                  <span>m</span>
+                </div>
+                <p
+                  class="field-error"
+                  id="coaming-height-error"
+                  aria-live="polite"
+                ></p>
+              </div>
+              <div class="field">
+                <label for="coaming-factor"
+                  >Hệ số xương quầy hầm <span aria-hidden="true">*</span></label
+                >
+                <div class="input-with-unit input-with-unit--factor">
+                  <input
+                    id="coaming-factor"
+                    name="coamingFactor"
+                    type="text"
+                    inputmode="decimal"
+                    autocomplete="off"
+                    aria-describedby="coaming-factor-error"
+                    disabled
+                  />
+                </div>
+                <p
+                  class="field-error"
+                  id="coaming-factor-error"
+                  aria-live="polite"
+                ></p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="input-card optional-section self-propelled-section"
+          id="cargo-section"
+          aria-labelledby="cargo-heading"
+          hidden
+        >
+          <header class="input-card__header">
+            <div>
+              <p class="input-card__index">03</p>
+              <h3 id="cargo-heading">Số liệu hầm hàng</h3>
+            </div>
+            <label class="switch-row" for="has-cargo-hold">
+              <input id="has-cargo-hold" name="hasCargoHold" type="checkbox" />
+              <span class="switch" aria-hidden="true"></span>
+              <span>Có hầm hàng</span>
+            </label>
+          </header>
+
+          <div class="optional-fields" id="cargo-fields" hidden>
+            <p class="optional-fields__hint">
+              Số vách ngăn là số nguyên từ 0 trở lên.
+            </p>
+            <div class="field-grid field-grid--four">
+              <div class="field">
+                <label for="cargo-length"
+                  >Chiều dài hầm hàng <span aria-hidden="true">*</span></label
+                >
+                <div class="input-with-unit">
+                  <input
+                    id="cargo-length"
+                    name="cargoLength"
+                    type="text"
+                    inputmode="decimal"
+                    autocomplete="off"
+                    aria-describedby="cargo-length-error"
+                    disabled
+                  />
+                  <span>m</span>
+                </div>
+                <p
+                  class="field-error"
+                  id="cargo-length-error"
+                  aria-live="polite"
+                ></p>
+              </div>
+              <div class="field">
+                <label for="cargo-width"
+                  >Chiều rộng hầm hàng <span aria-hidden="true">*</span></label
+                >
+                <div class="input-with-unit">
+                  <input
+                    id="cargo-width"
+                    name="cargoWidth"
+                    type="text"
+                    inputmode="decimal"
+                    autocomplete="off"
+                    aria-describedby="cargo-width-error"
+                    disabled
+                  />
+                  <span>m</span>
+                </div>
+                <p
+                  class="field-error"
+                  id="cargo-width-error"
+                  aria-live="polite"
+                ></p>
+              </div>
+              <div class="field">
+                <label for="cargo-height"
+                  >Chiều cao hầm hàng <span aria-hidden="true">*</span></label
+                >
+                <div class="input-with-unit">
+                  <input
+                    id="cargo-height"
+                    name="cargoHeight"
+                    type="text"
+                    inputmode="decimal"
+                    autocomplete="off"
+                    aria-describedby="cargo-height-error"
+                    disabled
+                  />
+                  <span>m</span>
+                </div>
+                <p
+                  class="field-error"
+                  id="cargo-height-error"
+                  aria-live="polite"
+                ></p>
+              </div>
+              <div class="field">
+                <label for="partition-count"
+                  >Số vách ngăn <span aria-hidden="true">*</span></label
+                >
+                <div class="input-with-unit input-with-unit--factor">
+                  <input
+                    id="partition-count"
+                    name="partitionCount"
+                    type="text"
+                    inputmode="numeric"
+                    autocomplete="off"
+                    aria-describedby="partition-count-error"
+                    disabled
+                  />
+                </div>
+                <p
+                  class="field-error"
+                  id="partition-count-error"
+                  aria-live="polite"
+                ></p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="actions no-print" aria-label="Các chức năng tính toán">
+          <button class="button button--primary" type="submit">
+            Tính diện tích
+          </button>
+          <button
+            class="button button--secondary"
+            id="load-sample-button"
+            type="button"
+          >
+            Nạp dữ liệu mẫu
+          </button>
+          <button class="button button--ghost" id="reset-button" type="button">
+            Xóa dữ liệu
+          </button>
+          <button
+            class="button button--ghost"
+            id="copy-button"
+            type="button"
+            disabled
+          >
+            Sao chép kết quả
+          </button>
+          <button
+            class="button button--print"
+            id="print-button"
+            type="button"
+            disabled
+          >
+            In báo cáo
+          </button>
+        </div>
+      </form>
+
+      <section
+        class="results"
+        id="results-section"
+        aria-labelledby="results-heading"
+      >
+        <div class="section-intro section-intro--results">
+          <div>
+            <p class="section-kicker">Bước 3</p>
+            <h2 id="results-heading">Kết quả diện tích</h2>
+          </div>
+          <p class="result-state" id="result-status" aria-live="polite">
+            Nhập đủ thông số để xem kết quả.
+          </p>
+        </div>
+
+        <div class="print-meta" id="print-meta" aria-label="Thông tin báo cáo">
+          <div class="print-meta__brand">
+            <img
+              class="print-meta__logo"
+              src="/img/Logo-HV-01.png"
+              alt="Sơn Hải Vân"
+            />
+            <div class="print-meta__titles">
+              <p class="print-meta__company">Sơn Hải Vân</p>
+              <p class="print-meta__doc">Báo cáo tính diện tích sơn sà lan</p>
+            </div>
+          </div>
+          <p>
+            <strong>Loại sà lan:</strong>
+            <span id="print-barge-type">Sà lan boong</span>
+          </p>
+          <p>
+            <strong>Ngày giờ tính toán:</strong>
+            <span id="print-calculated-at">—</span>
+          </p>
+          <div>
+            <strong>Thông số đầu vào:</strong>
+            <ul id="print-input-list"></ul>
+          </div>
+        </div>
+
+        <div
+          class="table-scroll"
+          tabindex="0"
+          aria-label="Bảng kết quả diện tích có thể cuộn ngang"
+        >
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Khu vực</th>
+                <th scope="col">Diện tích</th>
+                <th scope="col">Đơn vị</th>
+              </tr>
+            </thead>
+            <tbody id="results-body"></tbody>
+          </table>
+        </div>
+
+        <details class="formula-details">
+          <summary>Chi tiết công thức</summary>
+          <div class="formula-content" id="formula-content">
+            <p>Chọn loại sà lan và nhập đủ thông số để xem phép thế số.</p>
+          </div>
+        </details>
+      </section>
+
+      <aside class="notice" aria-label="Ghi chú cảnh báo">
+        <div class="notice__mark" aria-hidden="true">!</div>
+        <div>
+          <h2>Ghi chú quan trọng</h2>
+          <p>
+            Kết quả được tính theo công thức nội bộ từ bảng tính Excel và mang
+            tính chất ước tính. Cần kiểm tra lại thông số thực tế trước khi báo
+            giá hoặc triển khai thi công.
+          </p>
+        </div>
+      </aside>
+
+      <div
+        class="toast no-print"
+        id="toast"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      ></div>
     </main>
 
     <footer class="site-footer">
-        <p>Công cụ nội bộ · Diện tích hiển thị theo đơn vị m²</p>
+      <img
+        class="site-footer__logo"
+        src="/img/Logo-HV-01.png"
+        alt="Sơn Hải Vân"
+      />
+      <p>Sơn Hải Vân · Công cụ nội bộ · Diện tích hiển thị theo đơn vị m²</p>
     </footer>
-</body>
+  </body>
 </html>
